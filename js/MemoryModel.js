@@ -1,7 +1,12 @@
 import ItemsComponentModel from 'core/js/models/itemsComponentModel';
+import QuestionModel from 'core/js/models/questionModel';
 import ItemModel from 'core/js/models/itemModel';
 
 export default class MemoryModel extends ItemsComponentModel {
+  constructor(attributes, options) {
+    super(attributes, options);
+    _.extend(this, QuestionModel.prototype);
+  }
   setUpItems() {
     const items = this.get('_items') || [];
     items.forEach((item, index) => (item._index = index + 1));
